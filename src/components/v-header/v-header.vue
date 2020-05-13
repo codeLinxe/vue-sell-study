@@ -46,14 +46,7 @@
       }
     },
     methods: {
-      showDetail() {
-        this.headerDetailComp = this.headerDetailComp || this.$createHeaderDetail({
-          $props: {
-            seller: 'seller'
-          }
-        })
-        this.headerDetailComp.show()
-      }
+      showDetail() {}
     },
     components: {
       SupportIco

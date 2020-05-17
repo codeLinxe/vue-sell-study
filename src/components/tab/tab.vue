@@ -71,6 +71,16 @@
   }
 </script>
 
-<style scoped>
+<style lang="stylus" scoped>
+  @import "~common/stylus/variable"
 
+  .tab
+    >>> .cube-tab
+      padding: 10px 0
+    display: flex
+    flex-direction: column
+    height: 100%
+    .slide-wrapper
+      flex: 1
+      overflow: hidden
 </style>

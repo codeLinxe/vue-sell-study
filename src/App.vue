@@ -1,17 +1,20 @@
 <template>
   <div id="app" @touchmove.prevent>
     <v-header :seller="seller"></v-header>
+    <tab></tab>
   </div>
 </template>
 
 <script>
   import VHeader from 'components/v-header/v-header'
+  import Tab from 'components/tab/tab'
   import { getSeller } from 'api/index'
 
   export default {
     name: 'App',
     components: {
-      VHeader
+      VHeader,
+      Tab
     },
     data() {
       return {

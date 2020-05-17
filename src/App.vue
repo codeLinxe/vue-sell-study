@@ -1,7 +1,9 @@
 <template>
   <div id="app" @touchmove.prevent>
     <v-header :seller="seller"></v-header>
-    <tab></tab>
+    <div class="tab-wrapper">
+      <tab></tab>
+    </div>
   </div>
 </template>
 
@@ -35,4 +37,11 @@
 </script>
 
 <style lang="stylus">
+  #app
+    .tab-wrapper
+      position: fixed
+      top: 136px
+      left: 0
+      right: 0
+      bottom: 0
 </style>

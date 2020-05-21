@@ -4,6 +4,7 @@
       :showSlider=true
       v-model="selectedLabel"
       :data="tabs"
+      :useTransition=false
       ref="tabBar"
       class="border-bottom-1px">
     </cube-tab-bar>
@@ -13,7 +14,11 @@
         :auto-play=false
         :show-dots=false
         :initial-index="index"
-        ref="slide">
+        :options="slideOptions"
+        ref="slide"
+        @change="onChange"
+        @scroll="onScroll"
+      >
         <cube-slide-item>
           <goods></goods>
         </cube-slide-item>
@@ -48,7 +53,12 @@
           {
             label: '商家'
           }
-        ]
+        ],
+        slideOptions: {
+          listenScroll: true,
+          probeType: 3,
+          directionLockThreshold: 0
+        }
       }
     },
     computed: {
@@ -63,6 +73,17 @@
         }
       }
     },
+    methods: {
+      onScroll(pos) {
+        const tabBarWidth = this.$refs.tabBar.$el.clientWidth
+        const slideWidth = this.$refs.slide.slide.scrollerWidth
+        const transform = -pos.x / slideWidth * tabBarWidth
+        this.$refs.tabBar.setSliderTransform(transform)
+      },
+      onChange(current) {
+        this.index = current
+      }
+    },
     components: {
       Seller,
       Goods,
@@ -75,6 +96,9 @@
   @import "~common/stylus/variable"
 
   .tab
+    display: flex
+    flex-direction: column
+    height: 100%
     >>> .cube-tab
       padding: 10px 0
     display: flex
